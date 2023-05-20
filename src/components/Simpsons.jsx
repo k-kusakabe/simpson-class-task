@@ -3,13 +3,22 @@ import Character from "./Character.jsx";
 
 class Simpsons extends Component {
   state = {};
+
+  // charIndexViewer = (index) => {
+  //   console.log(index);
+  // };
+
   render() {
     const { simpsons } = this.props;
 
     return (
       <>
-        {simpsons.map((item) => {
-          return <Character item={item} key={item.quote} />;
+        {simpsons.map((item, index) => {
+          return (
+            <>
+              <Character item={item} key={item.quote} />
+            </>
+          );
         })}
       </>
     );

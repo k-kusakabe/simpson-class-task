@@ -2,7 +2,14 @@ import React, { Component } from "react";
 
 class Image extends Component {
   render() {
-    return <img src={this.props.image} alt={this.props.character} />;
+    const { like, image, character } = this.props;
+    return (
+      <img
+        className={like ? "liked" : "notLiked"}
+        src={image}
+        alt={character}
+      />
+    );
   }
 }
 

@@ -1,22 +1,14 @@
 import React, { Component } from "react";
 
 class Name extends Component {
-  state = { like: false };
   render() {
-    const { like } = this.state;
-    console.log(this.state, this.props);
+    const { like, character, onLikeToggle } = this.props;
 
     return (
-      <>
-        <p>{this.props.character}</p>
-        <button
-          onClick={() => {
-            this.setState({ like: !this.state.like });
-          }}
-        >
-          {like ? "liked" : "not liked"}
-        </button>
-      </>
+      <div>
+        <p>{character}</p>
+        <button onClick={onLikeToggle}>{like ? "liked" : "not liked"}</button>
+      </div>
     );
   }
 }
