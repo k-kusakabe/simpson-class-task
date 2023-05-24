@@ -10,7 +10,6 @@ class Simpsons extends Component {
 
   render() {
     const { simpsons } = this.props;
-
     return (
       <>
         {simpsons.map((item, index) => {
