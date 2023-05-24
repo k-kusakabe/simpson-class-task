@@ -15,7 +15,11 @@ class Simpsons extends Component {
         {simpsons.map((item, index) => {
           return (
             <>
-              <Character item={item} key={item.quote} />
+              <Character
+                item={item}
+                key={item.quote}
+                onDelete={this.props.onDelete}
+              />
             </>
           );
         })}
