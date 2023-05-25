@@ -9,14 +9,22 @@ class App extends Component {
 
   async componentDidMount() {
     const { data } = await axios.get(
-      `https://thesimpsonsquoteapi.glitch.me/quotes?count=5`
+      `https://thesimpsonsquoteapi.glitch.me/quotes?count=10`
     );
+    //fixed the api data to have unique id
+    data.forEach((element, index) => {
+      element.id = index + Math.random();
+    });
+    console.log(data);
     this.setState({ simpsons: data });
   }
 
-  onDelete = (index) => {
+  onDelete = (id) => {
+    const indexOf = this.state.simpsons.findIndex((char) => {
+      return char.id === id;
+    });
     const simpsons = [...this.state.simpsons];
-    simpsons.splice(index, 1);
+    simpsons.splice(indexOf, 1);
     this.setState({ simpsons });
   };
 
@@ -24,6 +32,7 @@ class App extends Component {
     const { simpsons } = this.state;
 
     if (!simpsons) return <Loading />;
+    if (simpsons.length === 0) return <p>You deleted everything!</p>;
     return (
       <>
         <h1>Total no of liked chars #</h1>

@@ -6,7 +6,7 @@ class Delete extends Component {
       <div>
         <button
           onClick={() => {
-            this.props.onDelete(this.props.quote, this.props.character);
+            this.props.onDelete(this.props.id);
           }}
         >
           Delete
