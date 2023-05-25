@@ -9,7 +9,7 @@ class Simpsons extends Component {
   // };
 
   render() {
-    const { simpsons } = this.props;
+    const { simpsons, onDelete, onLikeToggle } = this.props;
     return (
       <>
         {simpsons.map((item, index) => {
@@ -18,7 +18,8 @@ class Simpsons extends Component {
               <Character
                 item={item}
                 key={item.id}
-                onDelete={this.props.onDelete}
+                onDelete={onDelete}
+                onLikeToggle={onLikeToggle}
               />
             </>
           );

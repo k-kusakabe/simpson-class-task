@@ -5,25 +5,22 @@ import Image from "./Image";
 import Delete from "./Delete";
 
 class Character extends Component {
-  state = { like: false };
-
-  onLikeToggle = () => {
-    this.setState({ like: !this.state.like });
-  };
-
   render() {
-    const { character, quote, image, id, characterDirection } = this.props.item;
-    const { like } = this.state;
+    const { character, quote, image, id, characterDirection, liked } =
+      this.props.item;
+
+    const { onDelete, onLikeToggle } = this.props;
 
     if (characterDirection === "Left") {
       return (
         <div className="characterContainer">
           <Name
             character={character}
-            like={like}
-            onLikeToggle={this.onLikeToggle}
+            onLikeToggle={this.props.onLikeToggle}
+            id={id}
+            liked={liked}
           />
-          <Image image={image} like={like} />
+          <Image image={image} />
           <Quote quote={quote} />
           <Delete onDelete={this.props.onDelete} id={id} />
         </div>
@@ -34,12 +31,13 @@ class Character extends Component {
       <div className="characterContainer">
         <Name
           character={character}
-          like={like}
-          onLikeToggle={this.onLikeToggle}
+          onLikeToggle={onLikeToggle}
+          id={id}
+          liked={liked}
         />
         <Quote quote={quote} />
-        <Image image={image} like={like} />
-        <Delete onDelete={this.props.onDelete} id={id} />
+        <Image image={image} />
+        <Delete onDelete={onDelete} id={id} />
       </div>
     );
   }

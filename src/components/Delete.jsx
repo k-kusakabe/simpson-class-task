@@ -2,11 +2,12 @@ import React, { Component } from "react";
 
 class Delete extends Component {
   render() {
+    const { onDelete, id } = this.props;
     return (
       <div>
         <button
           onClick={() => {
-            this.props.onDelete(this.props.id);
+            onDelete(id);
           }}
         >
           Delete
