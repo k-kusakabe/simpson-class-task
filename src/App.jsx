@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import Loading from "./components/Loading";
 import Simpsons from "./components/Simpsons";
+import Controls from "./components/Controls";
 import "./App.css";
 
 class App extends Component {
@@ -41,6 +42,11 @@ class App extends Component {
     this.setState({ simpsons });
   };
 
+  //sort by name
+  onNameInput = (e) => {
+    this.setState({ nameInput: e.target.value });
+  };
+
   render() {
     const { simpsons } = this.state;
     if (!simpsons) return <Loading />;
@@ -52,9 +58,11 @@ class App extends Component {
       if (char.liked) total++;
     });
 
+    console.log(this.state);
     return (
       <>
         <h1>Total no of liked chars #{total}</h1>
+        <Controls onNameInput={this.onNameInput} />
         <Simpsons
           simpsons={simpsons}
           onDelete={this.onDelete}
