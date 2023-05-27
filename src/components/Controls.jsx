@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Controls extends Component {
   state = {};
   render() {
-    const { onSearchInput, onNameInput } = this.props;
+    const { onSearchInput, onNameInput, onResetInput } = this.props;
     return (
       <>
         <input onInput={onSearchInput} type="text" />
@@ -12,6 +12,7 @@ class Controls extends Component {
           <option value="asc">Asc</option>
           <option value="desc">Desc</option>
         </select>
+        <button onClick={onResetInput}>reset</button>
       </>
     );
   }

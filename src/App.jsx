@@ -95,6 +95,11 @@ class App extends Component {
     return filteredList;
   };
 
+  // function to reset the state
+  onResetInput = () => {
+    this.setState({ searchInput: "", nameInput: "" });
+  };
+
   render() {
     const { simpsons } = this.state;
     if (!simpsons) return <Loading />;
@@ -106,13 +111,13 @@ class App extends Component {
       if (char.liked) total++;
     });
 
-    console.log(this.state);
     return (
       <>
         <h1>Total no of liked chars #{total}</h1>
         <Controls
           onNameInput={this.onNameInput}
           onSearchInput={this.onSearchInput}
+          onResetInput={this.onResetInput}
         />
         <Simpsons
           simpsons={this.getFilteredList()}
