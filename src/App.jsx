@@ -42,7 +42,12 @@ class App extends Component {
     this.setState({ simpsons });
   };
 
-  //function to add state for sort
+  //function to add state to filter by name
+  onSearchInput = (e) => {
+    this.setState({ searchInput: e.target.value });
+  };
+
+  //function to add state to sort by name
   onNameInput = (e) => {
     this.setState({ nameInput: e.target.value });
   };
@@ -90,11 +95,14 @@ class App extends Component {
       if (char.liked) total++;
     });
 
-    console.log(simpsons);
+    console.log(this.state);
     return (
       <>
         <h1>Total no of liked chars #{total}</h1>
-        <Controls onNameInput={this.onNameInput} />
+        <Controls
+          onNameInput={this.onNameInput}
+          onSearchInput={this.onSearchInput}
+        />
         <Simpsons
           simpsons={this.getFilteredList()}
           onDelete={this.onDelete}

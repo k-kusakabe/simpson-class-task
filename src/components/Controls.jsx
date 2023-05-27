@@ -3,9 +3,10 @@ import React, { Component } from "react";
 class Controls extends Component {
   state = {};
   render() {
-    const { onNameInput } = this.props;
+    const { onSearchInput, onNameInput } = this.props;
     return (
       <>
+        <input onInput={onSearchInput} type="text" />
         <select onChange={onNameInput}>
           <option value=""></option>
           <option value="asc">Asc</option>
