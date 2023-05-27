@@ -49,7 +49,7 @@ class App extends Component {
 
   //function to get filtered list
   getFilteredList = () => {
-    const { nameInput } = this.state;
+    const { simpsons, nameInput } = this.state;
 
     let filteredList = [...simpsons];
 
@@ -96,7 +96,7 @@ class App extends Component {
         <h1>Total no of liked chars #{total}</h1>
         <Controls onNameInput={this.onNameInput} />
         <Simpsons
-          simpsons={simpsons}
+          simpsons={this.getFilteredList()}
           onDelete={this.onDelete}
           onLikeToggle={this.onLikeToggle}
         />
