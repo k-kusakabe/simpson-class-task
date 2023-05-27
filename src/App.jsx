@@ -42,9 +42,41 @@ class App extends Component {
     this.setState({ simpsons });
   };
 
-  //sort by name
+  //function to add state for sort
   onNameInput = (e) => {
     this.setState({ nameInput: e.target.value });
+  };
+
+  //function to get filtered list
+  getFilteredList = () => {
+    const { nameInput } = this.state;
+
+    let filteredList = [...simpsons];
+
+    //sort by name
+    if (nameInput === "asc") {
+      filteredList.sort((itemOne, itemTwo) => {
+        if (itemOne.character.toUpperCase() < itemTwo.character.toUpperCase()) {
+          return -1;
+        }
+        if (itemOne.character.toUpperCase() > itemTwo.character.toUpperCase()) {
+          return 1;
+        }
+        return 0;
+      });
+    } else if (nameInput === "desc") {
+      filteredList.sort((itemOne, itemTwo) => {
+        if (itemOne.character.toUpperCase() < itemTwo.character.toUpperCase()) {
+          return 1;
+        }
+        if (itemOne.character.toUpperCase() > itemTwo.character.toUpperCase()) {
+          return -1;
+        }
+        return 0;
+      });
+    }
+
+    return filteredList;
   };
 
   render() {
@@ -58,7 +90,7 @@ class App extends Component {
       if (char.liked) total++;
     });
 
-    console.log(this.state);
+    console.log(simpsons);
     return (
       <>
         <h1>Total no of liked chars #{total}</h1>
