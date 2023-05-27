@@ -54,9 +54,20 @@ class App extends Component {
 
   //function to get filtered list
   getFilteredList = () => {
-    const { simpsons, nameInput } = this.state;
+    const { simpsons, searchInput, nameInput } = this.state;
 
     let filteredList = [...simpsons];
+
+    // filter by name
+    if (searchInput) {
+      filteredList = filteredList.filter((item) => {
+        if (
+          item.character.toLowerCase().startsWith(searchInput.toLowerCase())
+        ) {
+          return true;
+        }
+      });
+    }
 
     //sort by name
     if (nameInput === "asc") {
